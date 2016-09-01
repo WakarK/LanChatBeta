@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US" ng-app="LoginPage">
+<html lang="en-US" >
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,7 @@
         <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <script src="angular/angular.min.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -37,29 +38,42 @@
                     <h1>Sign Up</h1>
                     <br>
                     <br>
-                    <form class="form-horizontal" role="form">
+                    <form class="form-horizontal" role="form" name="signUpForm" ng-app="signUpApp" ng-controller="validateCtrl" novalidate>
                         <div class="form-group">
                             <label for="firstname" class="col-sm-4 control-label">First Name</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" ng-model="firstname" required>
+                                <span style="color:red;" ng-show="signUpForm.firstname.$touched && signUpForm.firstname.$invalid" >
+                                    <span ng-show="signUpForm.firstname.$error.required">First Name is required</span>
+                                </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="lastname" class="col-sm-4 control-label">Last Name</label>
                             <div class="col-sm-4">
-                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" ng-model="lastname" required>
+                                <span style="color:red;" ng-show="signUpForm.lastname.$touched && signUpForm.lastname.$invalid" >
+                                    <span ng-show="signUpForm.lastname.$error.required">Last Name is required</span>
+                                </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="col-sm-4 control-label">Email</label>
                             <div class="col-sm-4">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" ng-model="email" required>
+                                <span style="color:red;" ng-show="signUpForm.email.$touched && signUpForm.email.$invalid">
+                                    <span ng-show="signUpForm.email.$error.required">Email is required.</span>
+                                    <span ng-show="signUpForm.email.$error.email">Invalid Email address.</span>
+                                </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-sm-4 control-label">Password</label>
                             <div class="col-sm-4">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" ng-model="password" required>
+                                <span style="color:red;" ng-show="signUpForm.password.$touched && signUpForm.password.$invalid" >
+                                    <span ng-show="signUpForm.password.$error.required">Password is required</span>
+                                </span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -88,4 +102,5 @@
             </div>
         </footer>
     </body>
+    <script src="control.js"></script>
 </html>
