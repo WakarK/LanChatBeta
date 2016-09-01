@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-5 col-sm-10">
-                                <button type="submit" class="btn btn-primary">Sign Up</button>
+                                <button type="submit" class="btn btn-primary" ng-disabled="signUpForm.firstname.$touched && signUpForm.firstname.$invalid || signUpForm.email.$touched && signUpForm.email.$invalid || signUpForm.lastname.$touched && signUpForm.lastname.$invalid || signUpForm.password.$touched && signUpForm.password.$invalid || signUpForm.firstname.$untouched || signUpForm.lastname.$untouched || signUpForm.email.$untouched || signUpForm.password.$untouched">Sign Up</button>
                             </div>
                         </div>
                     </form>
